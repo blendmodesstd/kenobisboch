@@ -21,8 +21,6 @@ const Animations = function() {
 
     function _renderData(entry) {
 
-        console.log('adtafdthgd')
-
         var isExpired = moment(entry.start_time).isAfter(moment().format('llll'));
 
         var _LI = document.createElement('li');
@@ -1006,15 +1004,11 @@ const Animations = function() {
             var content = JSON.parse(responseText);
 
             content.posts.forEach(function(entry) {
-                // console.log('asd')
                 if (entry.embeds.length > 0) {
-                    // console.log('asd 1')
                     if (entry.embeds[0].type == 'event') {
-                        // console.log('asd event')
                         var _currentUrl = entry.embeds[0].request_url;
                         entry.embeds[0].start_time = moment(entry.embeds[0].start_time).format('llll');
                         if (urlEvents.indexOf(_currentUrl) == -1) {
-                            // console.log('asd doppione')
                             urlEvents.push(_currentUrl);
                             listEvents.push(entry.embeds[0])
                         }
