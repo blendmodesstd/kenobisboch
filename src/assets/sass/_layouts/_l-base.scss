@@ -9,7 +9,10 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
 }
 
 .m-intro {
-    padding: 7.5% 7.5% 10% 7.5%;
+    padding: 20% 7.5% 20% 7.5%;
+    @include breakpoint($tablet) {
+        padding: 7.5% 7.5% 10% 7.5%;
+    }
 }
 
 .m-shows {
@@ -19,8 +22,11 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
         background: #333;
         padding: rem(15) rem(25);
         font-weight: bold;
-        font-size: calc(8px + 1vw);
         transform: translateY(-50%);
+        font-size: calc(14px + 1vw);
+        @include breakpoint($tablet) {
+            font-size: calc(8px + 1vw);
+        }
     }
 }
 
@@ -36,12 +42,15 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
 
 
 .m-event {
-  &__title {
-    font-size: calc(8px + 1vw);
-    display: block;
-    margin: rem(10) 0;
-    font-weight: bolder;
-  }
+    &__title {
+        display: block;
+        margin: rem(10) 0;
+        font-weight: bolder;
+        font-size: calc(14px + 1vw);
+        @include breakpoint($tablet) {
+            font-size: calc(8px + 1vw);
+        }
+    }
 }
 
 .m-list-shows {
@@ -51,8 +60,11 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
   li {
     border-left: 2px solid #fff;
     padding-left: rem(30);
-    max-width: 60%;
     width: 100%;
+    max-width: 80%;
+    @include breakpoint($tablet) {
+        max-width: 60%;
+    }
     span {
       font-weight: bolder;
     }
@@ -72,13 +84,18 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
 }
 
 .m-subtitle {
-    margin-top: rem(100);
+    padding-top: 10%;
     width: 100%;
-    max-width: 66%;
+    @include breakpoint($tablet) {
+        max-width: 66%;
+    }
 }
 
 .m-text {
-    font-size: calc(8px + 1vw);
+    font-size: calc(10px + 1vw);
+    @include breakpoint($tablet) {
+        font-size: calc(8px + 1vw);
+    }
 }
 
 
