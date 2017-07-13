@@ -1,6 +1,6 @@
 $screen-background: #121010;
-$ease-out-quint:cubic-bezier(0.230, 1.000, 0.320, 1.000);
-$ease-in-quint:cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$ease-out-quint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
 
 
 .l-site {
@@ -24,11 +24,34 @@ $ease-in-quint:cubic-bezier(0.755, 0.050, 0.855, 0.060);
     }
 }
 
+.is-expired {
+    opacity: .3;
+    .m-event__description {
+        display: none;
+    }
+    .m-event__title {
+        text-decoration: line-through;
+    }
+}
+
+
+.m-event {
+  &__title {
+    font-size: calc(8px + 1vw);
+    display: block;
+    margin: rem(10) 0;
+    font-weight: bolder;
+  }
+}
+
 .m-list-shows {
+  a {
+    display: block;
+  }
   li {
     border-left: 2px solid #fff;
     padding-left: rem(30);
-    max-width: 70%;
+    max-width: 60%;
     width: 100%;
     span {
       font-weight: bolder;

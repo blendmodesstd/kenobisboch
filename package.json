@@ -47,6 +47,8 @@
     "gsap": "^1.19.1",
     "gulp-gh-pages": "^0.5.4",
     "in-view": "^0.6.1",
+    "moment": "^2.18.1",
+    "moment-timezone": "^0.5.13",
     "nanoajax": "^0.4.3",
     "object-fit-images": "^3.0.1",
     "picturefill": "^3.0.2",
