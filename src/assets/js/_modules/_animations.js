@@ -8,7 +8,7 @@ const Animations = function() {
     moment.tz.setDefault('Europe/Berlin');
 
     var _doc = document;
-    var _list = _doc.querySelector('.m-list-shows');
+    var _list = _doc.querySelector('.m-list-events');
 
     var listEvents = [];
     var urlEvents = [];

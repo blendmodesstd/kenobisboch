@@ -1,0 +1,6 @@
+.m-intro {
+    padding: 20% 7.5% 20% 7.5%;
+    @include breakpoint($tablet) {
+        padding: 7.5% 7.5% 10% 7.5%;
+    }
+}
