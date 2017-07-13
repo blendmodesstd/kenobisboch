@@ -21,7 +21,7 @@ const Animations = function() {
 
     function _renderData(entry) {
 
-        console.log(entry)
+        console.log('adtafdthgd')
 
         var isExpired = moment(entry.start_time).isAfter(moment().format('llll'));
 
@@ -1000,52 +1000,51 @@ const Animations = function() {
             "_total": 21
         }
 
-        var _api = "https://api.twitch.tv/kraken/feed/kenobisboch/posts?client_id=0auj7aw5ss9f03dbrtafgg0ljmsmf1";
+        var _api = "https://api.twitch.tv/kraken/feed/kenobisboch/posts?client_id=0auj7aw5ss9f03dbrtafgg0ljmsmf1&limit=50";
 
-        _fakeData.posts.forEach(function(entry) {
-            if (entry.embeds.length > 0) {
-                if (entry.embeds[0].type == 'event') {
-                    var _currentUrl = entry.embeds[0].request_url;
-                    entry.embeds[0].start_time = moment(entry.embeds[0].start_time).format('llll');
-                    if (urlEvents.indexOf(_currentUrl) == -1) {
-                        urlEvents.push(_currentUrl);
-                        listEvents.push(entry.embeds[0])
+        nanoajax.ajax({url:_api}, function (code, responseText) {
+            var content = JSON.parse(responseText);
+
+            content.posts.forEach(function(entry) {
+                // console.log('asd')
+                if (entry.embeds.length > 0) {
+                    // console.log('asd 1')
+                    if (entry.embeds[0].type == 'event') {
+                        // console.log('asd event')
+                        var _currentUrl = entry.embeds[0].request_url;
+                        entry.embeds[0].start_time = moment(entry.embeds[0].start_time).format('llll');
+                        if (urlEvents.indexOf(_currentUrl) == -1) {
+                            // console.log('asd doppione')
+                            urlEvents.push(_currentUrl);
+                            listEvents.push(entry.embeds[0])
+                        }
                     }
                 }
-            }
-        });
+            });
 
-        listEvents.sort((a, b) => {
-            if (moment(a.start_time).isAfter(b.start_time)) {
-                return -1;
-            } else {
-                return 1;
-            }
-        });
+            listEvents.sort((a, b) => {
+                if (moment(a.start_time).isAfter(b.start_time)) {
+                    return -1;
+                } else {
+                    return 1;
+                }
+            });
+            listEvents.forEach(_renderData);
+            document.querySelector('.m-shows__title').innerHTML = 'Upcoming Events';
+        })
 
-        listEvents.forEach(_renderData);
-
-
-
-        // nanoajax.ajax({url:_api}, function (code, responseText) {
-        //     var content = JSON.parse(responseText);
-        //     content.posts.forEach(function(entry) {
-
-        //         console.log(entry)
-
-        //         // var _LI = document.createElement('li');
-        //         // var _tmp = `
-        //         //         <span class="m-date">${entry.created_at}</span>
-        //         //         <p>
-        //         //             ${entry.body}
-        //         //         </p>
-        //         // `;
-
-        //         // _LI.innerHTML = _tmp
-        //         // _list.appendChild(_LI);
-        //     });
-
-        // })
+        // _fakeData.posts.forEach(function(entry) {
+        //     if (entry.embeds.length > 0) {
+        //         if (entry.embeds[0].type == 'event') {
+        //             var _currentUrl = entry.embeds[0].request_url;
+        //             entry.embeds[0].start_time = moment(entry.embeds[0].start_time).format('llll');
+        //             if (urlEvents.indexOf(_currentUrl) == -1) {
+        //                 urlEvents.push(_currentUrl);
+        //                 listEvents.push(entry.embeds[0])
+        //             }
+        //         }
+        //     }
+        // });
 
     }
 
