@@ -16,9 +16,7 @@ const Konami = function() {
     // a variable to remember the 'position' the user has reached so far.
     var konamiCodePosition = 0;
 
-
     function _handleEvents() {
-
         // add keydown event listener
         document.addEventListener('keydown', function(e) {
             // get the value of the key code from the key map
@@ -28,7 +26,6 @@ const Konami = function() {
 
             // compare the key with the required key
             if (key == requiredKey) {
-
                 // move to the next key in the konami code sequence
                 konamiCodePosition++;
 
