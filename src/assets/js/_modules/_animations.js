@@ -6,13 +6,13 @@ const Animations = function() {
 
     moment.tz.setDefault('Europe/Berlin');
 
-    var _doc = document;
-    var _list = _doc.querySelector('.m-list-events');
+    const _doc = document;
+    const _list = _doc.querySelector('.m-list-events');
+    const _screen = _doc.querySelector('.screen');
     var listEvents = [];
     var urlEvents = [];
 
     function _removePreloader() {
-        var _screen = _doc.querySelector('.screen');
         _screen.classList.add('is-on');
     }
 
@@ -34,27 +34,29 @@ const Animations = function() {
         if (!isExpired) {
             _LI.classList.add('is-expired');
         }
-        var _tmp = `
+        const _markup = `
             <a href="${entry.request_url}">
                 <span class="m-event__date">
                     ${entry.start_time}
                 </span>
-                <p class="m-event__title">
-                    ${entry.title}
-                </p>
+                <div>
+                    <p class="m-event__title" data-glitch-hover="${entry.title}">
+                        ${entry.title}
+                    </p>
+                </div>
                 <p class="m-event__description">
                     ${entry.description}
                 </p>
             </a>
         `;
 
-        _LI.innerHTML = _tmp
+        _LI.innerHTML = _markup;
         _list.appendChild(_LI);
     }
 
     function _getData() {
 
-        var _api = "https://api.twitch.tv/kraken/feed/kenobisboch/posts?client_id=0auj7aw5ss9f03dbrtafgg0ljmsmf1&limit=50";
+        const _api = "https://api.twitch.tv/kraken/feed/kenobisboch/posts?client_id=0auj7aw5ss9f03dbrtafgg0ljmsmf1&limit=50";
 
         nanoajax.ajax({url:_api}, function (code, responseText) {
             var content = JSON.parse(responseText);
@@ -91,10 +93,10 @@ const Animations = function() {
             }, 3000);
             setTimeout(() => {
                 _removePreloader();
-            }, 100)
+            }, 100);
             setTimeout(() => {
                 _doc.querySelector('.is-flickering').classList.remove('is-flickering');
-            }, 7000)
+            }, 7000);
         };
     }
 

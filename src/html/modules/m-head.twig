@@ -1,9 +1,28 @@
+{% set title = 'Kenobisboch' %}
+{% set site = 'http://www.kenobisboch.zone' %}
+{% set short_description = 'Amiamo il retrogaming.' %}
+{% set long_description = 'Amiamo il retrogaming. Dopo un passato su riviste di videogiochi come Giochi per il Mio Computer, TGM, Xbox Magazine Ufficiale, PSM e Nintendo la Rivista Ufficiale, ci divertiamo a riscoprire classici e perle nascoste in streaming.' %}
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Kenobisboch</title>
+
+<title>{{ title }}</title>
+
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
 <link rel="icon" href="/assets/img/favicon.ico">
-<meta name="msapplication-TileColor" content="#5d6e82">
-<meta name="theme-color" content="#5d6e82">
+<meta name="msapplication-TileColor" content="#121010">
+<meta name="theme-color" content="#121010">
+
+<meta name="description" content="{{ short_description }}"/>
+
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ long_description }}">
+<meta property="og:image" content="http://euro-travel-example.com/thumbnail.jpg">
+<meta property="og:url" content="{{ site }}">
+
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content=" {{ long_description }}">
+<meta name="twitter:image" content=" http://euro-travel-example.com/thumbnail.jpg">
+<meta name="twitter:card" content="summary_large_image">

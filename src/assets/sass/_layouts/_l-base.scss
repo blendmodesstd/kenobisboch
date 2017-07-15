@@ -40,9 +40,10 @@ strong {
 
 .m-event {
     &__title {
-        display: block;
+        display: inline;
         margin: rem(10) 0;
         font-weight: bolder;
+        position: relative;
         font-size: calc(14px + 1vw);
         @include breakpoint($tablet) {
             font-size: calc(8px + 1vw);
@@ -53,8 +54,32 @@ strong {
 .m-list-events {
     a {
         display: block;
+        &:hover {
+            .m-event__title {
+                position: relative;
+                transform: scaleX(1);
+                white-space: nowrap;
+                &:after, &:before {
+                    content: attr(data-glitch-hover);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    overflow: hidden;
+                    background: #16191b;
+                    color: #fff;
+                    clip: rect(0, 900px, 0, 0);
+                }
+                &:before {
+                    animation: glitch-effect .5s infinite linear alternate-reverse;
+                }
+                &:after {
+                    animation: glitch-effect .4s infinite linear alternate-reverse;
+                }
+            }
+        }
     }
-        li {
+    li {
         border-left: 2px solid #fff;
         padding-left: rem(30);
         width: 100%;

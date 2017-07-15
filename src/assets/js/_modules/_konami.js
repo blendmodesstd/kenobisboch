@@ -1,7 +1,10 @@
 const Konami = function() {
 
+    const _doc = document;
+    const _screen = _doc.querySelector('.screen');
+
     // a key map of allowed keys
-    var allowedKeys = {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
@@ -11,14 +14,14 @@ const Konami = function() {
     };
 
     // the 'official' Konami Code sequence
-    var konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
+    const konamiCode = ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'];
 
     // a variable to remember the 'position' the user has reached so far.
     var konamiCodePosition = 0;
 
     function _handleEvents() {
         // add keydown event listener
-        document.addEventListener('keydown', function(e) {
+        _doc.addEventListener('keydown', (e) => {
             // get the value of the key code from the key map
             var key = allowedKeys[e.keyCode];
             // get the value of the required key from the konami code
@@ -41,7 +44,6 @@ const Konami = function() {
     }
 
     function _activateCheats() {
-        var _screen = document.querySelector('.screen');
         _screen.classList.toggle('is-on');
         _screen.classList.toggle('is-off');
     }

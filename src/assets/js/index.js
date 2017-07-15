@@ -13,5 +13,5 @@ console.log('');
 console.log('Ps. Konami Code :P');
 
 if (isTouch) {
-    document.body.classList.remove('no-touch')
+    document.body.classList.remove('no-touch');
 }
