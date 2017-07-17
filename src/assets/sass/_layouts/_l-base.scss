@@ -314,3 +314,68 @@ strong {
         clip: rect(85px, 9999px, 94px, 0)
     }
 }
+
+
+@keyframes glitchy-shadow {
+    0%   {
+        filter: drop-shadow(-3px 3px 0px currentColor);
+    }
+    25%  {
+        filter: drop-shadow(-3px -3px 0px currentColor);
+    }
+    50%  {
+        filter: drop-shadow(3px 3px 0px currentColor);
+    }
+    75%  {
+        filter: drop-shadow(3px -3px 0px currentColor);
+    }
+    100%  {
+        filter: drop-shadow(-3px 3px 0px currentColor);
+    }
+}
+
+.icon-discord {
+    &:hover {
+        svg {
+            color: #7289DA;
+            animation: glitchy-shadow 0.3s ease infinite;
+        }
+    }
+}
+
+.icon-fb {
+    &:hover {
+        svg {
+            color: #3B5998;
+            animation: glitchy-shadow 0.3s ease infinite;
+        }
+    }
+}
+
+.list-social {
+    padding: 10% 0% 0% 0%;
+    @include breakpoint($tablet) {
+        padding: 3.5% 0% 0% 0%;
+    }
+    ul {
+        border: 2px solid #fff;
+        display: inline-flex;
+        padding: rem(15);
+        flex-direction: row;
+    }
+    li {
+        width: rem(25);
+        height: rem(25);
+        &+li {
+            margin-left: rem(20);
+        }
+    }
+    a, span, svg {
+        display: block;
+    }
+    svg {
+        width: 100%;
+        height: 100%;
+        fill: map-get($colors, white);
+    }
+}
