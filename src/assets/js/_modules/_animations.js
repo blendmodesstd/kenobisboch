@@ -36,17 +36,22 @@ const Animations = function() {
         }
         const _markup = `
             <a href="${entry.request_url}">
-                <span class="m-event__date">
-                    ${entry.start_time}
-                </span>
+                <div class="event-thumbnail">
+                    <img src="${entry.thumbnail_url}" alt="" />
+                </div>
                 <div>
-                    <p class="m-event__title" data-glitch-hover="${entry.title}">
-                        ${entry.title}
+                    <span class="m-event__date">
+                        ${entry.start_time}
+                    </span>
+                    <div>
+                        <p class="m-event__title" data-glitch-hover="${entry.title}">
+                            ${entry.title}
+                        </p>
+                    </div>
+                    <p class="m-event__description">
+                        ${entry.description}
                     </p>
                 </div>
-                <p class="m-event__description">
-                    ${entry.description}
-                </p>
             </a>
         `;
 
