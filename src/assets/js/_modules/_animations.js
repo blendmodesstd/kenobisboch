@@ -28,7 +28,15 @@ const Animations = function() {
 
     function _renderData(entry) {
 
-        var isExpired = moment(entry.start_time).isAfter(moment().format('llll'));
+        var isExpired = moment(entry.end_time).isAfter(moment().format('llll'));
+        var isOnAir = false;
+
+        if ((moment(entry.end_time).isAfter(moment().format('llll'))) && (moment(entry.start_time).isBefore(moment().format('llll')))){
+            _screen.classList.add('on-air');
+            _screen.querySelector('.on-air__element').setAttribute('href', entry.request_url);
+            _screen.querySelector('.on-air__element strong').innerHTML = entry.title;
+            isOnAir = true;
+        }
 
         var _LI = document.createElement('li');
         if (!isExpired) {

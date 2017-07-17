@@ -11,6 +11,23 @@ strong {
     max-width: rem(1600);
 }
 
+.on-air {
+    position: relative;
+    &__element {
+        background: red;
+        text-transform: uppercase;
+        display: block;
+        text-align: center;
+        font-size: rem(25);
+        font-weight: bold;
+        line-height: 1;
+        padding: rem(10);
+        &:hover {
+            background: map-get($colors, red);
+        }
+    }
+}
+
 
 .m-shows {
     padding: 0 0 7.5% 7.5%;
