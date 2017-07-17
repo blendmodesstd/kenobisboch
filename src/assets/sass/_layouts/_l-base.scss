@@ -11,9 +11,13 @@ strong {
     max-width: rem(1600);
 }
 
+.on-air__element {
+    display: none;
+}
+
 .on-air {
     position: relative;
-    &__element {
+    .on-air__element {
         background: red;
         text-transform: uppercase;
         display: block;
