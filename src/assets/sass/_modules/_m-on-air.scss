@@ -1,0 +1,20 @@
+.on-air__element {
+    display: none;
+}
+
+.on-air {
+    position: relative;
+    .on-air__element {
+        background: red;
+        text-transform: uppercase;
+        display: block;
+        text-align: center;
+        font-size: rem(25);
+        font-weight: bold;
+        line-height: 1;
+        padding: rem(10);
+        &:hover {
+            background: map-get($colors, red);
+        }
+    }
+}

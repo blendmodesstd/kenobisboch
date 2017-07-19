@@ -11,26 +11,6 @@ strong {
     max-width: rem(1600);
 }
 
-.on-air__element {
-    display: none;
-}
-
-.on-air {
-    position: relative;
-    .on-air__element {
-        background: red;
-        text-transform: uppercase;
-        display: block;
-        text-align: center;
-        font-size: rem(25);
-        font-weight: bold;
-        line-height: 1;
-        padding: rem(10);
-        &:hover {
-            background: map-get($colors, red);
-        }
-    }
-}
 
 
 .m-shows {
@@ -172,7 +152,7 @@ strong {
 .l-site {
     // flicker
     &.is-flickering {
-        &::after{
+        &:after{
             content: "";
             display: block;
             position: absolute;
@@ -188,7 +168,7 @@ strong {
         }
     }
     // scanlines
-    &::before{
+    &:before{
         content: "";
         display: block;
         position: absolute;
@@ -355,10 +335,19 @@ strong {
     }
 }
 
-.icon-discord {
+.icon-twitch, .icon-fb {
+    display: block;
+    svg, span, a {
+        width: rem(25);
+        height: rem(25);
+        display: block;
+    }
+}
+
+.icon-twitch {
     &:hover {
         svg {
-            color: #7289DA;
+            color: #6441A5;
             animation: glitchy-shadow 0.3s ease infinite;
         }
     }
