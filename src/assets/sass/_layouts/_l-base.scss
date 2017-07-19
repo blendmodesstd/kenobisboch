@@ -335,12 +335,21 @@ strong {
     }
 }
 
-.icon-twitch, .icon-fb {
+.icon-discord, .icon-twitch, .icon-fb, .icon-youtube {
     display: block;
     svg, span, a {
         width: rem(25);
         height: rem(25);
         display: block;
+    }
+}
+
+.icon-discord {
+    &:hover {
+        svg {
+            color: #7289DA;
+            animation: glitchy-shadow 0.3s ease infinite;
+        }
     }
 }
 
@@ -357,6 +366,15 @@ strong {
     &:hover {
         svg {
             color: #3B5998;
+            animation: glitchy-shadow 0.3s ease infinite;
+        }
+    }
+}
+
+.icon-youtube {
+    &:hover {
+        svg {
+            color: #CD201F;
             animation: glitchy-shadow 0.3s ease infinite;
         }
     }

@@ -43,7 +43,7 @@ const Animations = function() {
             _LI.classList.add('is-expired');
         }
         const _markup = `
-            <a href="${entry.request_url}">
+            <a href="${entry.request_url}" target="_blank">
                 <div class="event-thumbnail">
                     <img src="${entry.thumbnail_url}" alt="" />
                 </div>
