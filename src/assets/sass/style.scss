@@ -19,3 +19,20 @@
         '_modules/m-screen',
         '_modules/m-on-air',
         '_modules/m-footer';
+
+
+.embed-live {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.6%;
+    &.not-live {
+        display: none;
+    }
+    iframe {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}

@@ -9,8 +9,10 @@ const Animations = function() {
     const _doc = document;
     const _list = _doc.querySelector('.m-list-events');
     const _screen = _doc.querySelector('.screen');
+    const _embedLive = _doc.querySelector('.embed-live');
     var listEvents = [];
     var urlEvents = [];
+    var isOnAir = false;
 
     function _removePreloader() {
         _screen.classList.add('is-on');
@@ -29,7 +31,6 @@ const Animations = function() {
     function _renderData(entry) {
 
         var isExpired = moment(entry.end_time).isAfter(moment().format('llll'));
-        var isOnAir = false;
 
         if ((moment(entry.end_time).isAfter(moment().format('llll'))) && (moment(entry.start_time).isBefore(moment().format('llll')))){
             _screen.classList.add('on-air');
@@ -93,6 +94,22 @@ const Animations = function() {
                 }
             });
             listEvents.forEach(_renderData);
+
+            if (isOnAir) {
+                const _markupEmbed = `
+                    <iframe
+                        src="http://player.twitch.tv/?channel=kenobisboch"
+                        height=""
+                        width=""
+                        frameborder="0"
+                        scrolling="no"
+                        allowfullscreen="true">
+                    </iframe>
+                `;
+                _embedLive.innerHTML = _markupEmbed;
+                _embedLive.classList.remove('not-live');
+            }
+
             _doc.querySelector('.m-shows__title').innerHTML = 'Upcoming Events';
         })
 
