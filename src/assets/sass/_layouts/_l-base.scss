@@ -71,6 +71,28 @@ strong {
     }
 }
 
+.logo-glitch {
+    #k-red{
+        transition: transform .4s $ease .2s;
+    }
+    #k-blue{
+        transition: transform .4s $ease;
+    }
+
+    .no-touch &{
+        &:hover {
+            #k-red{
+                transform: translate(0.5%, -4%) !important;
+            }
+
+            #k-blue{
+                transform: translate(-0.5%, 4%) !important;
+            }
+        }
+    }
+}
+
+
 .m-list-events {
     a {
         align-items: center;
@@ -103,10 +125,30 @@ strong {
         }
     }
     li {
-        border-left: 2px solid #fff;
         padding-left: rem(30);
         width: 100%;
         max-width: 85%;
+        position: relative;
+        &:after {
+            content: "";
+            display: block;
+            width: 2px;
+            height: 100%;
+            background: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform .3s ease;
+            transform-origin: top left;
+            will-change: transform;
+        }
+        .no-touch &{
+            &:hover {
+                &:after {
+                    transform: scaleX(8);
+                }
+            }
+        }
         @include breakpoint($tablet) {
             max-width: 80%;
         }
@@ -222,10 +264,10 @@ strong {
     white-space: nowrap;
     &.is-active {
         &:before {
-            animation: glitch-effect 2s infinite linear alternate-reverse
+            animation: glitch-effect 2s infinite linear alternate-reverse;
         }
         &:after {
-            animation: glitch-effect 1.9s infinite linear alternate-reverse
+            animation: glitch-effect 1.9s infinite linear alternate-reverse;
         }
     }
     &:after, &:before {
@@ -334,6 +376,7 @@ strong {
         filter: drop-shadow(-3px 3px 0px currentColor);
     }
 }
+
 
 .icon-discord, .icon-twitch, .icon-fb, .icon-youtube {
     display: block;
