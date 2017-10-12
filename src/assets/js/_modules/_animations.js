@@ -30,9 +30,9 @@ const Animations = function() {
 
     function _renderData(entry) {
 
-        var isExpired = moment(entry.end_time).isAfter(moment().format('llll'));
+        var isExpired = moment(entry.end_time).isAfter(moment().format());
 
-        if ((moment(entry.end_time).isAfter(moment().format('llll'))) && (moment(entry.start_time).isBefore(moment().format('llll')))){
+        if ((moment(entry.end_time).isAfter(moment().format())) && (moment(entry.start_time).isBefore(moment().format()))){
             _screen.classList.add('on-air');
             _screen.querySelector('.on-air__element').setAttribute('href', entry.request_url);
             _screen.querySelector('.on-air__element strong').innerHTML = entry.title;
@@ -50,7 +50,7 @@ const Animations = function() {
                 </div>
                 <div>
                     <span class="m-event__date">
-                        ${entry.start_time}
+                        ${moment(entry.start_time).format('llll')}
                     </span>
                     <div>
                         <p class="m-event__title" data-glitch-hover="${entry.title}">
@@ -75,11 +75,10 @@ const Animations = function() {
         nanoajax.ajax({url:_api}, function (code, responseText) {
             var content = JSON.parse(responseText);
             content.posts.forEach(function(entry) {
-                //console.log(entry)
                 if (entry.embeds.length > 0) {
                     if (entry.embeds[0].type == 'event') {
                         var _currentUrl = entry.embeds[0].request_url;
-                        entry.embeds[0].start_time = moment(entry.embeds[0].start_time).format('llll');
+                        entry.embeds[0].start_time = moment(entry.embeds[0].start_time).format();
                         if (urlEvents.indexOf(_currentUrl) == -1) {
                             urlEvents.push(_currentUrl);
                             listEvents.push(entry.embeds[0])
