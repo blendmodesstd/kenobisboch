@@ -75,6 +75,7 @@ const Animations = function() {
         nanoajax.ajax({url:_api}, function (code, responseText) {
             var content = JSON.parse(responseText);
             content.posts.forEach(function(entry) {
+                //console.log(entry)
                 if (entry.embeds.length > 0) {
                     if (entry.embeds[0].type == 'event') {
                         var _currentUrl = entry.embeds[0].request_url;
