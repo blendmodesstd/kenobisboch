@@ -70,7 +70,7 @@ const Animations = function() {
 
     function _getData() {
 
-        const _api = "https://api.twitch.tv/kraken/feed/kenobisboch/posts?client_id=0auj7aw5ss9f03dbrtafgg0ljmsmf1&limit=50";
+        const _api = "https://api.twitch.tv/kraken/feed/kenobisboch/posts?client_id=0auj7aw5ss9f03dbrtafgg0ljmsmf1&limit=100";
 
         nanoajax.ajax({url:_api}, function (code, responseText) {
             var content = JSON.parse(responseText);
