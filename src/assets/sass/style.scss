@@ -36,3 +36,37 @@
         height: 100%;
     }
 }
+
+.more-info {
+    padding: 7.5% 7.5%;
+    a {
+        font-size: calc(8px + 1vw);
+        font-weight: bold;
+        border: 2px solid #fff;
+        display: inline-block;
+        padding: rem(15) rem(20);
+        position: relative;
+        &:hover {
+            &:after, &:before {
+                font-size: calc(8px + 1vw);
+                padding: rem(14) rem(19);
+                content: attr(data-glitch-hover);
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                overflow: hidden;
+                background: #16191b;
+                clip: rect(0, 900px, 0, 0);
+            }
+            &:before {
+                color: red;
+                animation: glitch-effect .5s infinite linear alternate-reverse;
+            }
+            &:after {
+                color: #39F9FF;
+                animation: glitch-effect .4s infinite linear alternate-reverse;
+            }
+        }
+    }
+}
