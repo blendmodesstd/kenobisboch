@@ -2,13 +2,33 @@ $screen-background: #121010;
 $ease-out-quint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
 $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
 
+.m-shows {
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #F3904F;
+        background: linear-gradient(to top, #FF0000, #39F9FF);
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #000;
+    }
+}
+
 strong {
     font-weight: bolder;
 }
 
 .l-site {
     position: relative;
-    max-width: rem(1600);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -16,13 +36,24 @@ strong {
 .m-shows {
     padding: 0 0 7.5% 7.5%;
     background: #131313;
+    @include breakpoint($tabletUp) {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 60%;
+        padding: 0 rem(50);
+        overflow: auto;
+    }
     &__title {
         background: #333;
         padding: rem(15) rem(25);
         font-weight: bold;
-        transform: translateY(-50%);
         font-size: calc(14px + 1vw);
-        @include breakpoint($tablet) {
+        margin: rem(50) 0;
+        transform: translateY(-50%);
+        @include breakpoint($tabletUp) {
+            transform: translateY(0%);
             font-size: calc(8px + 1vw);
         }
     }
@@ -60,6 +91,7 @@ strong {
     margin-right: rem(15);
     border: 2px solid #fff;
     display: none;
+    overflow: hidden;
     @include breakpoint($tablet) {
         display: block;
     }
@@ -97,32 +129,31 @@ strong {
     a {
         align-items: center;
         display: flex;
-        &:hover {
-            .m-event__title {
-                color: #fff;
-                position: relative;
-                transform: scaleX(1);
-                white-space: nowrap;
-                &:after, &:before {
-                    content: attr(data-glitch-hover);
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    overflow: hidden;
-                    background: #16191b;
-                    clip: rect(0, 900px, 0, 0);
-                }
-                &:before {
-                    color: red;
-                    animation: glitch-effect .5s infinite linear alternate-reverse;
-                }
-                &:after {
-                    color: #39F9FF;
-                    animation: glitch-effect .4s infinite linear alternate-reverse;
-                }
-            }
-        }
+        // &:hover {
+        //     .m-event__title {
+        //         color: #fff;
+        //         position: relative;
+        //         transform: scaleX(1);
+        //         &:after, &:before {
+        //             content: attr(data-glitch-hover);
+        //             position: absolute;
+        //             top: 0;
+        //             left: 0;
+        //             right: 0;
+        //             overflow: hidden;
+        //             background: #16191b;
+        //             clip: rect(0, 900px, 0, 0);
+        //         }
+        //         &:before {
+        //             color: red;
+        //             animation: glitch-effect .5s infinite linear alternate-reverse;
+        //         }
+        //         &:after {
+        //             color: #39F9FF;
+        //             animation: glitch-effect .4s infinite linear alternate-reverse;
+        //         }
+        //     }
+        // }
     }
     li {
         padding-left: rem(30);
@@ -150,7 +181,7 @@ strong {
             }
         }
         @include breakpoint($tablet) {
-            max-width: 80%;
+            max-width: 100%;
         }
         span {
             font-weight: bolder;
@@ -172,9 +203,10 @@ strong {
 
 .m-subtitle {
     padding-top: 10%;
+    padding-bottom: 10%;
     width: 100%;
     @include breakpoint($tablet) {
-        max-width: 66%;
+        max-width: 100%;
     }
 }
 
