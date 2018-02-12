@@ -482,3 +482,32 @@ strong {
         fill: map-get($colors, white);
     }
 }
+
+[js-magnet] {
+    * {
+        pointer-events: none;
+    }
+}
+
+
+
+[js-follow-mouse] {
+    pointer-events: none;
+    position: fixed;
+    width: rem(20);
+    height: rem(20);
+    background: linear-gradient(to top, #FF0000, #39F9FF);
+    opacity: .2;
+    top: calc(var(--mousey) * 1px);
+    left: calc(var(--mousex) * 1px);
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    z-index: 999999999999999999;
+    transition: transform .2s linear, top .1s linear, left .1s linear;
+    &.-scale {
+        transform: translate(-50%, -50%) scale(5);
+    }
+    .is-touch & {
+        display: none !important;
+    }
+}
