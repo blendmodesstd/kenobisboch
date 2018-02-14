@@ -5,6 +5,10 @@
 .on-air {
     position: relative;
     .on-air__element {
+        width: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
         background: red;
         text-transform: uppercase;
         display: block;

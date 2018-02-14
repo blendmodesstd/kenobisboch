@@ -3,17 +3,12 @@
 {% block content %}
     <div class="l-site  is-flickering">
 
-        <div class="embed-live not-live"></div>
-
         <div class="screen">
-
-            <a class="on-air__element" href="/live">
-                <span>ON AIR: <strong></strong></span>
-            </a>
 
             {% include 'modules/m-intro.twig' %}
 
             <section class="m-shows">
+                <div class="embed-live not-live"></div>
                 <h1 class="m-shows__title">Loading Events</h1>
                 <ul class="m-list-events"></ul>
                 <div class="more-info">
