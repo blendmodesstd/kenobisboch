@@ -8,6 +8,7 @@ const Animations = () => {
 
     const _doc       = document
     const _list      = _doc.querySelector('.m-list-events')
+    const _oldList   = _doc.querySelector('.m-list-old-events')
     const _screen    = _doc.querySelector('.screen')
     const _embedLive = _doc.querySelector('.embed-live')
     var listEvents   = []
@@ -70,7 +71,15 @@ const Animations = () => {
         `
 
         _LI.innerHTML = _markup
-        _list.appendChild(_LI)
+        if (!isExpired) {
+            _oldList.appendChild(_LI)
+        } else {
+            if (_list.prepend !== undefined) {
+                _list.prepend(_LI)
+            } else {
+                _list.appendChild(_LI)
+            }
+        }
     }
 
     function _getData() {
