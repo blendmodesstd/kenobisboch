@@ -14,6 +14,7 @@ const Animations = () => {
     var listEvents   = []
     var urlEvents    = []
     var isOnAir      = false
+    let _counter     = 0
 
     function _removePreloader() {
         _screen.classList.add('is-on')
@@ -47,6 +48,8 @@ const Animations = () => {
 
         if (!isExpired) {
             _LI.classList.add('is-expired')
+        } else {
+            _counter++
         }
 
         const _markup = `
@@ -127,8 +130,6 @@ const Animations = () => {
                 _embedLive.innerHTML = _markupEmbed
                 _embedLive.classList.remove('not-live')
             }
-
-            _doc.querySelector('.m-shows__title').innerHTML = 'Upcoming Events'
         })
 
     }
@@ -145,6 +146,12 @@ const Animations = () => {
             setTimeout(() => {
                 _doc.querySelector('.is-flickering').classList.remove('is-flickering')
             }, 7000)
+
+            if (_counter == 0) {
+                _doc.querySelector('.m-shows__title.-main').remove()
+            } else {
+                _doc.querySelector('.m-shows__title.-main').innerHTML = 'Upcoming Events'
+            }
         };
     }
 

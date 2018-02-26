@@ -473,3 +473,20 @@ strong {
         display: none !important;
     }
 }
+
+.fixed-event {
+    margin: rem(50) 0;
+    display: flex;
+    justify-content: space-between;
+    > div {
+        border: 2px solid #fff;
+        width: 47%;
+    }
+    a {
+        display: block;
+    }
+    img {
+        display: block;
+        width: 100%;
+    }
+}
