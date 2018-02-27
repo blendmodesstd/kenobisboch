@@ -1,6 +1,6 @@
 const FollowMouse = (function() {
 
-    var needForRAF = true
+    let needForRAF = true
 
     const _updatePositionFollowMouse = (e) => {
         document.documentElement.style.setProperty('--mousey', e.clientY)
