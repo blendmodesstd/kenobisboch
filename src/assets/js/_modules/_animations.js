@@ -1,41 +1,40 @@
 import nanoajax from 'nanoajax'
 import timezone from 'moment-timezone'
 import moment   from 'moment'
+import {x0, x} from '../_helpers'
 
 const Animations = () => {
 
     moment.tz.setDefault('Europe/Berlin')
 
-    const _doc       = document
-    const _list      = _doc.querySelector('.m-list-events')
-    const _oldList   = _doc.querySelector('.m-list-old-events')
-    const _screen    = _doc.querySelector('.screen')
-    const _embedLive = _doc.querySelector('.embed-live')
-    var listEvents   = []
-    var urlEvents    = []
-    var isOnAir      = false
+    const _list      = x0('.m-list-events')
+    const _oldList   = x0('.m-list-old-events')
+    const _screen    = x0('.screen')
+    const _embedLive = x0('.embed-live')
+
+    let listEvents   = []
+    let urlEvents    = []
+    let isOnAir      = false
     let _counter     = 0
 
-    function _removePreloader() {
+    const _removePreloader = () => {
         _screen.classList.add('is-on')
     }
 
-    function _startGlitch() {
-        var item      = 0
-        var _elements = _doc.querySelectorAll('[data-glitch]')
+    const _startGlitch = () => {
+        let _glithItem  = 0
+        const _elements = x('[data-glitch]')
 
         setInterval(() => {
-            item = Math.floor(Math.random() * _elements.length)
+            _glithItem = Math.floor(Math.random() * _elements.length)
             Array.prototype.forEach.call(_elements, (el, i) => {
                 el.classList.remove('is-active')
             })
-            _elements[item].classList.add('is-active')
-        }, 3000)
+            _elements[_glithItem].classList.add('is-active')
+        }, 1500)
     }
 
-
-    function _renderData(entry) {
-
+    const _renderData = (entry) => {
         var isExpired = moment(entry.end_time).isAfter(moment().format())
         var _LI       = document.createElement('li')
 
@@ -70,10 +69,10 @@ const Animations = () => {
                         ${entry.description}
                     </p>
                 </div>
-            </a>
-        `
+            </a>`
 
         _LI.innerHTML = _markup
+
         if (!isExpired) {
             _oldList.appendChild(_LI)
         } else {
@@ -85,12 +84,11 @@ const Animations = () => {
         }
     }
 
-    function _getData() {
-
+    const _getData = (res, rej) => {
         const _api = "https://api.twitch.tv/kraken/feed/kenobisboch/posts?client_id=0auj7aw5ss9f03dbrtafgg0ljmsmf1&limit=100";
 
         nanoajax.ajax({url: _api}, (code, responseText) => {
-            var content = JSON.parse(responseText)
+            const content = JSON.parse(responseText)
 
             content.posts.forEach((entry) => {
                 if (entry.embeds.length > 0) {
@@ -130,29 +128,33 @@ const Animations = () => {
                 _embedLive.innerHTML = _markupEmbed
                 _embedLive.classList.remove('not-live')
             }
-        })
 
+            res()
+        })
     }
 
-    function _init() {
+    const _init = () => {
+        _startGlitch()
+
         window.onload = () => {
-            _getData()
-            _startGlitch()
+            const _promise = new Promise((resolve, reject) => {
+                _getData(resolve, reject)
+            })
 
-            setTimeout(() => {
+            _promise.then(() => {
                 _removePreloader()
-            }, 100)
 
-            setTimeout(() => {
-                _doc.querySelector('.is-flickering').classList.remove('is-flickering')
-            }, 7000)
+                setTimeout(() => {
+                    x0('.is-flickering').classList.remove('is-flickering')
+                }, 7000)
 
-            if (_counter == 0) {
-                _doc.querySelector('.m-shows__title.-main').remove()
-            } else {
-                _doc.querySelector('.m-shows__title.-main').innerHTML = 'Upcoming Events'
-            }
-        };
+                if (_counter == 0) {
+                    x0('.m-shows__title.-main').remove()
+                } else {
+                    x0('.m-shows__title.-main').innerHTML = 'Upcoming Events'
+                }
+            })
+        }
     }
 
     return {
