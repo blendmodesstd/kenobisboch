@@ -10,7 +10,7 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
     &::-webkit-scrollbar-thumb {
         background: #F3904F;
         background: linear-gradient(to top, #FF0000, #39F9FF);
-        border-radius: 10px;
+        border: 3px solid #fff;
     }
 
     &::-webkit-scrollbar-track {
@@ -105,28 +105,6 @@ strong {
     }
 }
 
-.logo-glitch {
-    #k-red{
-        transition: transform .4s $ease .2s;
-    }
-    #k-blue{
-        transition: transform .4s $ease;
-    }
-
-    .no-touch &{
-        &:hover {
-            #k-red{
-                transform: translate(0.5%, -4%) !important;
-            }
-
-            #k-blue{
-                transform: translate(-0.5%, 4%) !important;
-            }
-        }
-    }
-}
-
-
 .m-list-events, .m-list-old-events {
     a {
         align-items: center;
@@ -158,6 +136,7 @@ strong {
     width: 100%;
     display: block;
     svg {
+        fill: #FFF;
         display: block;
         width: 100%;
     }
@@ -173,9 +152,9 @@ strong {
 }
 
 .m-text {
-    font-size: calc(10px + 1vw);
-    @include breakpoint($tablet) {
-        font-size: calc(8px + 1vw);
+    font-size: calc(14px + 1vw);
+    @include breakpoint($tabletUp) {
+        font-size: calc(14px + .4vw);
     }
 }
 
