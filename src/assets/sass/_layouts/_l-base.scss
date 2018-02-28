@@ -10,11 +10,12 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
     &::-webkit-scrollbar-thumb {
         background: #F3904F;
         background: linear-gradient(to top, #FF0000, #39F9FF);
-        border: 3px solid #fff;
+        border-left: 3px solid #fff;
     }
 
     &::-webkit-scrollbar-track {
         background: #000;
+        border-left: 3px solid #fff;
     }
 }
 
@@ -34,7 +35,8 @@ strong {
 
 
 .m-shows {
-    padding: 0 0 7.5% 7.5%;
+    border-left: 3px solid #fff;
+    padding: 5%;
     background: #131313;
     @include breakpoint($tabletUp) {
         position: fixed;
@@ -46,12 +48,12 @@ strong {
         overflow: auto;
     }
     &__title {
+        display: block;
         background: #333;
         padding: rem(15) rem(25);
         font-weight: bold;
         font-size: calc(14px + 1vw);
         margin: rem(50) 0;
-        transform: translateY(-50%);
         @include breakpoint($tabletUp) {
             transform: translateY(0%);
             font-size: calc(8px + 1vw);
@@ -437,14 +439,14 @@ strong {
     position: fixed;
     width: rem(20);
     height: rem(20);
-    background: linear-gradient(to top, #FF0000, #39F9FF);
-    opacity: .2;
+    background: linear-gradient(to top, rgba(#FF0000,.2), rgba(#39F9FF,.2));
     top: calc(var(--mousey) * 1px);
     left: calc(var(--mousex) * 1px);
     transform: translate(-50%, -50%);
     border-radius: 100%;
     z-index: 999999999999999999;
     transition: transform .2s linear, top .1s linear, left .1s linear;
+    will-change: top, left;
     &.-scale {
         transform: translate(-50%, -50%) scale(5);
     }
@@ -456,7 +458,7 @@ strong {
 .fixed-event {
     margin: rem(50) 0;
     position: relative;
-    @include breakpoint($desktop) {
+    @include breakpoint($tablet) {
         display: flex;
         justify-content: space-between;
     }
@@ -465,11 +467,11 @@ strong {
         border: 2px solid #fff;
         &:last-of-type {
             margin-top: rem(50);
-            @include breakpoint($desktop) {
+            @include breakpoint($tablet) {
                 margin-top: 0;
             }
         }
-        @include breakpoint($desktop) {
+        @include breakpoint($tablet) {
             width: 47%;
         }
     }

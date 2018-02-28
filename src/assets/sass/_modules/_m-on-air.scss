@@ -6,19 +6,16 @@
     position: relative;
     .on-air__element {
         width: 100%;
-        top: 0;
-        left: 0;
-        position: absolute;
         background: red;
         text-transform: uppercase;
         display: block;
         text-align: center;
-        font-size: rem(25);
+        font-size: calc(14px + 1vw);
         font-weight: bold;
         line-height: 1;
         padding: rem(10);
-        &:hover {
-            background: map-get($colors, red);
+        * {
+            pointer-events: none;
         }
     }
 }
