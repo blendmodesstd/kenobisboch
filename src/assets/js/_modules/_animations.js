@@ -117,7 +117,7 @@ const Animations = () => {
             if (isOnAir) {
                 const _markupEmbed = `
                     <iframe
-                        src="http://player.twitch.tv/?channel=kenobisboch"
+                        src="https://player.twitch.tv/?channel=kenobisboch"
                         height=""
                         width=""
                         frameborder="0"
