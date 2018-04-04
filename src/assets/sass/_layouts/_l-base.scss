@@ -432,26 +432,36 @@ strong {
     }
 }
 
-
-
 [js-follow-mouse] {
-    pointer-events: none;
     position: fixed;
-    width: rem(20);
-    height: rem(20);
-    background: linear-gradient(to top, rgba(#FF0000,.2), rgba(#39F9FF,.2));
-    top: calc(var(--mousey) * 1px);
-    left: calc(var(--mousex) * 1px);
-    transform: translate(-50%, -50%);
-    border-radius: 100%;
-    z-index: 999999999999999999;
-    transition: transform .2s linear, top .1s linear, left .1s linear;
-    will-change: top, left;
+    top: -45px;
+    left: -45px;
+    width: 90px;
+    height: 90px;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 9999;
+    transform: matrix(1, 0, 0, 1, var(--mousex),var(--mousey));
+    transition: transform .1s linear;
+    will-change: transform;
     &.-scale {
-        transform: translate(-50%, -50%) scale(5);
+        &:after {
+            transform: scale(1);
+        }
     }
-    .is-touch & {
-        display: none !important;
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        transition: all .35s ease-out;
+        transform-origin: 50% 50%;
+        background: linear-gradient(to top, rgba(#FF0000,.5), rgba(#39F9FF,.5));
+        transform: scale(.2);
+        z-index: -2;
+        transition: transform .3s ease;
     }
 }
 

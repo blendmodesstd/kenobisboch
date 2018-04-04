@@ -1,6 +1,8 @@
+import {x0, x} from '../_helpers'
+
 const FollowMouse = (function() {
 
-    let needForRAF = true
+    var needForRAF = true
 
     const _updatePositionFollowMouse = (e) => {
         document.documentElement.style.setProperty('--mousey', e.clientY)
@@ -22,9 +24,9 @@ const FollowMouse = (function() {
 
             if (e.target.hasAttribute('js-magnet')) {
                 targetClasses = e.target.getAttribute('js-magnet')
-                document.querySelector('[js-follow-mouse]').classList.add(targetClasses)
+                x0('[js-follow-mouse]').classList.add(targetClasses)
             } else {
-                document.querySelector('[js-follow-mouse]').className = ''
+                x0('[js-follow-mouse]').className = ''
             }
 
         })
