@@ -74,10 +74,11 @@ strong {
 
 .m-event {
     &__title {
-        display: inline;
+        display: inline-block;
         margin: rem(10) 0;
         font-weight: bolder;
         position: relative;
+        line-height: 1.2;
         font-size: calc(14px + 1vw);
         @include breakpoint($tablet) {
             font-size: calc(8px + 1vw);
@@ -156,7 +157,7 @@ strong {
 .m-text {
     font-size: calc(14px + 1vw);
     @include breakpoint($tabletUp) {
-        font-size: calc(14px + .4vw);
+        font-size: calc(10px + .4vw);
     }
 }
 
@@ -443,8 +444,8 @@ strong {
     border-radius: 50%;
     z-index: 9999;
     transform: matrix(1, 0, 0, 1, var(--mousex),var(--mousey));
-    transition: transform .1s linear;
     will-change: transform;
+    transition: transform .1s ease;
     &.-scale {
         &:after {
             transform: scale(1);
@@ -456,12 +457,11 @@ strong {
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        transition: all .35s ease-out;
         transform-origin: 50% 50%;
         background: linear-gradient(to top, rgba(#FF0000,.5), rgba(#39F9FF,.5));
-        transform: scale(.2);
+        transform: scale(0);
         z-index: -2;
-        transition: transform .3s ease;
+        transition: transform .1s linear;
     }
 }
 
@@ -502,6 +502,62 @@ strong {
         background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
         strong {
             text-shadow: 1px 1px 0px #000;
+        }
+    }
+}
+
+#trigger-clip {
+    opacity: 0;
+    pointer-events: none;
+    font-weight: 900;
+    &.-active {
+        opacity: 1;
+        pointer-events: visible;
+    }
+}
+
+#trending-clip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(#000,0.95);
+    z-index: 99;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    will-change: opacity;
+    transition: opacity .3s ease;
+    &.-active {
+        opacity: 1;
+        pointer-events: visible;
+    }
+    .close-iframe {
+        cursor: zoom-out;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+    }
+    .wrap-iframe {
+        width: 70%;
+        z-index: 1;
+        position: relative;
+        > div {
+            width: 100%;
+            padding-bottom: 56.6%;
+        }
+        iframe {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            display: block;
         }
     }
 }

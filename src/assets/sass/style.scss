@@ -40,6 +40,18 @@
 
 .more-info {
     padding: rem(50) 0 rem(50);
+    &.-small {
+        padding: rem(20) 0 rem(20);
+        a {
+            padding: rem(10) rem(22);
+            font-size: rem(14);
+            &:hover {
+                &:after, &:before {
+                    font-size: rem(14);
+                }
+            }
+        }
+    }
     a {
         font-size: calc(8px + 1vw);
         font-weight: bold;

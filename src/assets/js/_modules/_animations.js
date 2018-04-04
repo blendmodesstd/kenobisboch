@@ -16,6 +16,7 @@ const Animations = () => {
     let urlEvents    = []
     let isOnAir      = false
     let _counter     = 0
+    let _bestClip    = ''
 
     const _removePreloader = () => {
         _screen.classList.add('is-on')
@@ -133,8 +134,27 @@ const Animations = () => {
         })
     }
 
+    const _getDataClip = (res, rej) => {
+        const _api = "https://api.twitch.tv/kraken/clips/top?channel=kenobisboch";
+
+        nanoajax.ajax({
+            url: _api,
+            headers: {
+                "Client-ID": "0auj7aw5ss9f03dbrtafgg0ljmsmf1",
+                "Accept": "application/vnd.twitchtv.v5+json"
+            }
+        }, (code, responseText) => {
+            const content = JSON.parse(responseText)
+
+            _bestClip = content.clips[0].embed_url
+
+            res()
+        })
+    }
+
     const _init = () => {
         _startGlitch()
+        _handleClip()
 
         window.onload = () => {
             const _promise = new Promise((resolve, reject) => {
@@ -154,7 +174,32 @@ const Animations = () => {
                     x0('.m-shows__title.-main').innerHTML = 'Upcoming Events'
                 }
             })
+
+            const _promiseClip = new Promise((resolve, reject) => {
+                _getDataClip(resolve, reject)
+            })
+
+            _promiseClip.then(() => {
+                x0('#trigger-clip').classList.add('-active')
+            })
         }
+    }
+
+    const _handleClip = () => {
+        const _triggerClip = x0('#trigger-clip')
+        const _triggerClose = x0('.close-iframe')
+        const _boxClip = x0('#trending-clip')
+
+        _triggerClip.addEventListener('click', () => {
+            _boxClip.classList.add('-active')
+            x0('.wrap-iframe iframe').src = _bestClip
+        })
+
+        _triggerClose.addEventListener('click', () => {
+            _boxClip.classList.remove('-active')
+            x0('.wrap-iframe iframe').src = ''
+        })
+
     }
 
     return {
