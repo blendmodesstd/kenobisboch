@@ -8,8 +8,8 @@ $ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
     }
 
     &::-webkit-scrollbar-thumb {
-        background: #F3904F;
-        background: linear-gradient(to top, #FF0000, #39F9FF);
+        // background: linear-gradient(to top, #FF0000, #39F9FF);
+        background: #fff;
         border-left: 3px solid #fff;
     }
 
