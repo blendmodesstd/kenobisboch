@@ -469,21 +469,21 @@ strong {
     margin: rem(50) 0;
     position: relative;
     @include breakpoint($tablet) {
-        display: flex;
-        justify-content: space-between;
+        // display: flex;
+        // justify-content: space-between;
     }
     > div {
         position: relative;
         border: 2px solid #fff;
         &:last-of-type {
             margin-top: rem(50);
-            @include breakpoint($tablet) {
-                margin-top: 0;
-            }
+            // @include breakpoint($tablet) {
+            //     margin-top: 0;
+            // }
         }
-        @include breakpoint($tablet) {
-            width: 47%;
-        }
+        // @include breakpoint($tablet) {
+        //     width: 47%;
+        // }
     }
     a {
         display: block;

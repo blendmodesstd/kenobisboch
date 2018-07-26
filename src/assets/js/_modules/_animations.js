@@ -36,6 +36,7 @@ const Animations = () => {
     }
 
     const _renderData = (entry) => {
+
         var isExpired = moment(entry.end_time).isAfter(moment().format())
         var _LI       = document.createElement('li')
 
@@ -90,6 +91,8 @@ const Animations = () => {
 
         nanoajax.ajax({url: _api}, (code, responseText) => {
             const content = JSON.parse(responseText)
+
+            console.log(content)
 
             content.posts.forEach((entry) => {
                 if (entry.embeds.length > 0) {
@@ -157,23 +160,25 @@ const Animations = () => {
         _handleClip()
 
         window.onload = () => {
-            const _promise = new Promise((resolve, reject) => {
-                _getData(resolve, reject)
-            })
+            // const _promise = new Promise((resolve, reject) => {
+            //     _getData(resolve, reject)
+            // })
 
-            _promise.then(() => {
-                _removePreloader()
+            // _promise.then(() => {
+            //     _removePreloader()
 
-                setTimeout(() => {
-                    x0('.is-flickering').classList.remove('is-flickering')
-                }, 7000)
+            //     setTimeout(() => {
+            //         x0('.is-flickering').classList.remove('is-flickering')
+            //     }, 7000)
 
-                if (_counter == 0) {
-                    x0('.m-shows__title.-main').remove()
-                } else {
-                    x0('.m-shows__title.-main').innerHTML = 'Upcoming Events'
-                }
-            })
+            //     if (_counter == 0) {
+            //         x0('.m-shows__title.-main').remove()
+            //     } else {
+            //         x0('.m-shows__title.-main').innerHTML = 'Upcoming Events'
+            //     }
+            // })
+            // 
+            _removePreloader()
 
             const _promiseClip = new Promise((resolve, reject) => {
                 _getDataClip(resolve, reject)
