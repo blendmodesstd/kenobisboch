@@ -1,0 +1,20 @@
+{% macro create(images) %}
+    {%
+        set breakpoints = ['1024px','768px']
+    %}
+    <picture>
+        {% if images.length > 1 %}
+            {% for image in images|slice(1,images.length)|reverse %}
+                <source 
+                    class="lazyload"
+                    data-srcset="../media/{{image}}"
+                    media="(min-width: {{breakpoints[loop.index0]}})">    
+            {% endfor %}
+        {% endif %}
+        <img 
+            data-src="../media/{{images[0]}}" 
+            alt=""
+            class="lazyload"
+        />
+    </picture>
+{% endmacro %}

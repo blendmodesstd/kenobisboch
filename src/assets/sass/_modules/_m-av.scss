@@ -1,0 +1,30 @@
+.is-on ~ .m-av {
+    animation: overlay-anim 5s linear;
+    animation-fill-mode: forwards;
+}
+
+.m-av{
+    color: #00FF00;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 60px;
+    text-shadow: 2px 2px black,-2px -2px black, -2px 2px black, 2px -2px black;
+    visibility: hidden;
+    line-height: 1;
+}
+
+@keyframes overlay-anim{
+    0%{
+        visibility: hidden;
+    }
+    20%{
+        visibility: hidden;
+    }
+    21%{
+        visibility: visible;
+    }
+    100%{
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,9 @@
+node_modules
+src/html/svg/sprite.svg
+dist
+static
+templates/modules
+package-lock.json
+.DS_Store
+.idea
+*.log

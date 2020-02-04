@@ -1,0 +1,17 @@
+.m-intro {
+    padding: 7.5%;
+    @include breakpoint($tabletUp) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 5% 5% 10% 5%;
+    }
+    @include breakpoint($wide) {
+        padding: 7.5% 7.5% 10% 7.5%;
+    }
+}

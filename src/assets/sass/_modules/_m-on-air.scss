@@ -1,0 +1,21 @@
+.on-air__element {
+    display: none;
+}
+
+.on-air {
+    position: relative;
+    .on-air__element {
+        width: 100%;
+        background: red;
+        text-transform: uppercase;
+        display: block;
+        text-align: center;
+        font-size: calc(14px + 1vw);
+        font-weight: bold;
+        line-height: 1;
+        padding: rem(10);
+        * {
+            pointer-events: none;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+// Fonts
+$baseFontSize : 10;
+
+// Mq
+$phablet: 414px;
+$tablet: 768px;
+$tabletUp: 769px;
+$desktop: 1024px;
+$wide: 1280px;
+
+// Colors
+$colors : (
+    base : #5d6e82,
+    light: #a9b1ba,
+    red: #cd3232,
+    grey: #eef0f2,
+    white: #fefefe
+);
+
+// Ease
+$ease: cubic-bezier(0.785, 0.135, 0.150, 0.860);
